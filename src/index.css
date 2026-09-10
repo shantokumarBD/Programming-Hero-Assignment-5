@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+/* Gradient Brand Theme */
+/* Gradient Brand Theme */
+
+
+.bg_brand_gradient{
+    background: linear-gradient(90deg,#f97316, #ec4899, #8b5cf6);
+    color: white;
+}
+
+
+.text_brand_gradient{
+    background: linear-gradient(90deg, #f97316, #ec4899, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
