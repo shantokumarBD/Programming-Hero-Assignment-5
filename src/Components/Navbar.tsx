@@ -45,8 +45,8 @@ const Navbar = () => {
             <div className="w-8 h-8 rounded bg_brand_gradient flex items-center justify-center text-white font-bold text-sm">
               DS
             </div>
-            <span className="font-bold">
-              Dev<span className="text_brand_gradient">Stack</span>
+            <span className="font-bold text-[#475569]">
+              Dev<span className="text_brand_gradient ">Stack</span>
             </span>
           </a>
         </div>
@@ -54,25 +54,25 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a className="text-pink-500 font-medium hover:bg-transparent">
+              <a className="text-pink-500  font-medium hover:bg-transparent">
                 Home
               </a>
             </li>
             <li>
-              <a className="hover:bg-transparent hover:text-pink-500">
+              <a className="font-medium  text-[#475569] hover:bg-transparent hover:text-pink-500">
                 Technologies
               </a>
             </li>
             <li>
-              <a className="hover:bg-transparent hover:text-pink-500">
+              <a className="font-medium text-[#475569] hover:bg-transparent hover:text-pink-500">
                 Projects
               </a>
             </li>
             <li>
-              <a className="hover:bg-transparent hover:text-pink-500">About</a>
+              <a className="font-medium  text-[#475569] hover:bg-transparent hover:text-pink-500">About</a>
             </li>
             <li>
-              <a className="hover:bg-transparent hover:text-pink-500">
+              <a className="font-medium text-[#475569] hover:bg-transparent hover:text-pink-500">
                 Contact
               </a>
             </li>
@@ -80,7 +80,7 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-end gap-4">
-          <a className="font-medium cursor-pointer">Sign In</a>
+          <a className="font-medium cursor-pointer text-[#475569]">Sign In</a>
           <a className="btn bg_brand_gradient text-white border-none rounded-full px-6 min-h-10 h-10">
             Sign Up
           </a>
