@@ -4,6 +4,7 @@ import Navbar from "./Components/Navbar"
 import Loader from "./Components/Loader"
 import TechSection from "./Components/TechSection"
 import type { TechType } from "./Types/techType"
+import Footer from "./Components/Footer"
 
 
 const techPromise = async(): Promise<TechType[]> => {
@@ -23,6 +24,7 @@ const App = () => {
           techPromise = {techPromise()}
           ></TechSection>
        </Suspense>
+       <Footer></Footer>
     </div>
   )
 }
