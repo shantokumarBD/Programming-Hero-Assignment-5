@@ -2,12 +2,16 @@ import type { TechType } from "../Types/techType";
 
 export interface TechCardProps {
   tech: TechType;
+  onAdd: (tech: TechType)=>void
+  isAlreadyAdded:  (id: string) => boolean
 }
 
-const TechCard = ({ tech }: TechCardProps) => {
+const TechCard = ({ tech, onAdd, isAlreadyAdded }: TechCardProps) => {
   return (
-    <div className="card border border-base-200 bg-base-100 shadow-sm p-6 hover:shadow-md transition-shadow">
-      {/* Top Row: Icon & Badge */}
+    <div className={`card border shadow-sm p-6 hover:shadow-md 
+      ${isAlreadyAdded(tech.id) ? "border-pink-400 bg-pink-50/30" : "border-base-200 bg-base-100"}
+    `}>
+      {/* Top Row */}
       <div className="flex justify-between items-start">
         <div className="w-12 h-12 bg-blue-50 p-2 rounded-lg flex items-center justify-center">
           <img
@@ -26,7 +30,7 @@ const TechCard = ({ tech }: TechCardProps) => {
         {tech.description}
       </p>
 
-      {/* Bottom Info: Category, Difficulty, Rating */}
+      {/* Bottom Info */}
       <div className="flex items-center justify-between mt-5 gap-2">
         
         {/* Badges Container */}
@@ -51,8 +55,19 @@ const TechCard = ({ tech }: TechCardProps) => {
 
 
       {/* Add to Stack Button (No function for now) */}
-      <button className="btn w-full mt-6 rounded-lg border-none bg-[#0A0F1D] text-white hover:bg-[#1e293b]">
-        Add to Stack
+      <button 
+      onClick={() => onAdd(tech)}
+      disabled={isAlreadyAdded(tech.id)}
+      className={`btn w-full mt-6 rounded-lg border-none 
+        ${isAlreadyAdded(tech.id) ? 
+          "text_brand_gradient bg-transparent hover:bg-transparent font-bold"
+          :
+          "bg-[#0A0F1D] text-white hover:bg-[#1e293b]"
+        }
+      `}>
+        {
+          isAlreadyAdded(tech.id) ? "✓ Added to Stack" : "Add to stack"
+        }
       </button>
     </div>
   );

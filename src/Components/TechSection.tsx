@@ -1,7 +1,8 @@
-import { use } from "react";
+import { use, useState } from "react";
 import type { TechType } from "../Types/techType";
 import TechCard from "./TechCard";
 import StackSidebar from "./StackSidebar";
+import { toast } from "react-toastify";
 
 export interface TechProps {
   techPromise: Promise<TechType[]>;
@@ -10,7 +11,26 @@ export interface TechProps {
 const TechSection = ({ techPromise }: TechProps) => {
   const techs = use(techPromise);
 
+  const [stack, setStack] = useState<TechType[]>([])
+  // console.log(stack);
+  
   // console.log(techs);
+
+  const handleAdd = (tech: TechType): void => {
+    // console.log(tech);
+
+    const isExist = stack.find((f)=> f.id === tech.id)
+
+    if(isExist){
+      toast.warning("Already in your stack!")
+    }else{
+      setStack([...stack, tech])
+      toast.success(`${tech.name} added to stack`)
+    }
+    
+  }
+
+  const isAlreadyAdded = (id: string):boolean => stack.some(item=> item.id === id)
 
   return (
    <div className="max-w-7xl mx-auto py-10 px-4">
@@ -30,7 +50,11 @@ const TechSection = ({ techPromise }: TechProps) => {
         {/* === left  === */}
         <div className="flex-1 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {techs.map((tech) => (
-            <TechCard key={tech.id} tech={tech} />
+            <TechCard key={tech.id} 
+            tech={tech} 
+            onAdd={handleAdd}
+            isAlreadyAdded={isAlreadyAdded}
+            />
           ))}
         </div>
         {/* === right  === */}
