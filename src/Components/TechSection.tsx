@@ -32,6 +32,20 @@ const TechSection = ({ techPromise }: TechProps) => {
 
   const isAlreadyAdded = (id: string):boolean => stack.some(item=> item.id === id)
 
+  // single remove item
+  const handleRemove = (id: string):void => {
+    const remaining = stack.filter((f)=> f.id !== id)
+    setStack(remaining)
+    toast.info("Remove from stack")
+  }
+
+  // all remove item
+
+  const handleRemoveAll = () =>{
+    setStack([])
+    toast.error("All technologies removed")
+  }
+
   return (
    <div className="max-w-7xl mx-auto py-10 px-4">
       
@@ -59,7 +73,11 @@ const TechSection = ({ techPromise }: TechProps) => {
         </div>
         {/* === right  === */}
         <div className="w-full lg:w-80 sticky top-20">
-           <StackSidebar />
+           <StackSidebar 
+            stack={stack}
+            onRemove={handleRemove}
+            onRemoveAll ={handleRemoveAll}
+           />
         </div>
         
       </div>

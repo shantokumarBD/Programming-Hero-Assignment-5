@@ -54,7 +54,7 @@ const TechCard = ({ tech, onAdd, isAlreadyAdded }: TechCardProps) => {
       </div>
 
 
-      {/* Add to Stack Button (No function for now) */}
+      {/* Add to Stack Button  */}
       <button 
       onClick={() => onAdd(tech)}
       disabled={isAlreadyAdded(tech.id)}
